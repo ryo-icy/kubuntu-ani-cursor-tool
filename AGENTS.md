@@ -108,9 +108,9 @@ Name=ThemeName
 Comment=ThemeName cursor theme (converted from Windows cursors)
 ```
 
-## Skill
+## AI Agent Skill
 
-`.agents/skills/convert-cursors/SKILL.md` (symlinked as `.claude/skills/convert-cursors/SKILL.md`) — invoked as `/convert-cursors`.
+`.agents/skills/convert-cursors/SKILL.md` (symlinked as `.claude/skills/convert-cursors/SKILL.md` for Claude Code compatibility) — invoked as `/convert-cursors`.
 
 Accepts optional arguments: `/convert-cursors [theme-name] [zip-or-directory]`.
 

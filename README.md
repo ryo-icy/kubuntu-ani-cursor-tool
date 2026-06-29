@@ -77,9 +77,9 @@ python src/main.py --list-roles
 | `up_arrow` | 上矢印 |
 | `pen` | ペン / 手書き |
 
-## Claude Code スキルで変換する
+## AI エージェントスキルで変換する
 
-[Claude Code](https://claude.ai/code) を使っている場合は、`/convert-cursors` スキルを使うと対話的に変換できます。
+AI エージェント（[Claude Code](https://claude.ai/code) 等）を使っている場合は、`/convert-cursors` スキルを使うと対話的に変換できます。
 
 ```
 /convert-cursors "MyTheme" ~/Downloads/cursors.zip
