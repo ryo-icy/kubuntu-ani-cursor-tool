@@ -16,7 +16,8 @@ flake.nix                                  Nix dev shell + installable package
 flake.lock
 .envrc                                     "use flake" only
 src/main.py                                CLI tool — all logic lives here
-.claude/skills/convert-cursors/SKILL.md    AI skill for cursor conversion
+.agents/skills/convert-cursors/SKILL.md    AI skill for cursor conversion
+.claude -> .agents                         Symlink (Claude Code reads .claude/)
 AGENTS.md                                  This file
 CLAUDE.md -> AGENTS.md                     Symlink
 README.md                                  Human-facing docs
@@ -109,9 +110,16 @@ Comment=ThemeName cursor theme (converted from Windows cursors)
 
 ## Skill
 
-`.claude/skills/convert-cursors/SKILL.md` — invoked as `/convert-cursors`.
+`.agents/skills/convert-cursors/SKILL.md` (symlinked as `.claude/skills/convert-cursors/SKILL.md`) — invoked as `/convert-cursors`.
 
-Guides Claude to collect theme name + role:file mappings from the user, check that `win2xcur` is in PATH, run `src/main.py`, and report the archive path.
+Accepts optional arguments: `/convert-cursors [theme-name] [zip-or-directory]`.
+
+Workflow:
+1. Lists `.ani`/`.cur` files from a zip or directory (extracts zip to a temp dir)
+2. Infers roles from filenames (English and Japanese); asks user for ambiguous cases
+3. Presents full mapping for user approval before conversion
+4. Runs `src/main.py` and reports the archive path + final mapping table
+5. Cleans up temp dir; reports failure and asks user to delete manually if `rm -rf` fails
 
 ## Nix environment
 

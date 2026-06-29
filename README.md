@@ -77,25 +77,27 @@ python src/main.py --list-roles
 | `up_arrow` | 上矢印 |
 | `pen` | ペン / 手書き |
 
+## Claude Code スキルで変換する
+
+[Claude Code](https://claude.ai/code) を使っている場合は、`/convert-cursors` スキルを使うと対話的に変換できます。
+
+```
+/convert-cursors "MyTheme" ~/Downloads/cursors.zip
+```
+
+スキルは以下を自動で行います：
+
+1. zip ファイルまたはディレクトリ内の `.ani`/`.cur` ファイルを列挙
+2. ファイル名（日本語を含む）からカーソルの役割を自動推定
+3. 判断が難しいファイルはユーザーに確認
+4. 全マッピングを提示して承認を得てから変換実行
+5. 作成したアーカイブのパスと最終マッピング一覧を報告
+
+引数は省略可能で、不足分はスキルが対話的に確認します。
+
 ## KDE への適用
 
 変換後に生成された `.tar.gz` ファイルを KDE でインストールします：
 
 **システム設定 → 外観 → カーソル → 「ファイルからインストール」→ `.tar.gz` を選択 → 適用**
 
-## ファイル構成
-
-```
-.
-├── flake.nix                              # Nix 環境定義
-├── flake.lock
-├── .envrc                                 # direnv 設定
-├── .claude/
-│   └── skills/
-│       └── convert-cursors/
-│           └── SKILL.md                   # AI 向けスキル定義
-├── AGENTS.md                              # AI 向けドキュメント
-├── CLAUDE.md -> AGENTS.md                 # AGENTS.md へのシンボリックリンク
-└── src/
-    └── main.py                            # ツール本体
-```
